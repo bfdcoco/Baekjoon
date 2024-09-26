@@ -1,0 +1,63 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	int N, M;
+
+	int Start_Basket, End_Basket, Tmp_Basket, Count, Basket_Count;
+
+	int Basket_list[100] = { 0, };
+
+	cin >> N >> M;
+
+	for (int i = 0; i < N; i++) {
+		Basket_list[i] = i+1;
+	}
+
+	for (int i = 0; i < M; i++) {
+		int Count = 0;
+		cin >> Start_Basket >> End_Basket;
+		Basket_Count = (End_Basket - Start_Basket + 1);
+		// Odd				1 2 3 4 5   1 3  3개
+		if (Basket_Count % 2 != 0) {
+			for (int i = Start_Basket-1; i < Start_Basket-1+Basket_Count/2; i++) {
+				//cout << " selected Basket 1 : " << Basket_list[i] << endl;
+				//cout << " selected Basket 2 : " << Basket_list[i + (Basket_Count - 1) - Count] << endl;
+				Tmp_Basket = Basket_list[i];
+				Basket_list[i] = Basket_list[i + (Basket_Count-1) - Count];
+				Basket_list[i + (Basket_Count - 1) - Count] = Tmp_Basket;
+				Count += 2;
+			}
+			/*
+			for (int i = 0; i < N; i++) {
+				cout << Basket_list[i] << " ";
+			}
+			cout << endl;
+			*/
+		}                   //   2 1 3 4 5     |    1  4   면 2 1 3 4    개수 4개네?   I 는 0 < 2   0 1 두 개 [0] = [0+3 - 0]->[3] [1] = [1+3-2]->[2]
+		// Even				1 2 3 4 5 6
+		else if (Basket_Count % 2 == 0) {
+			for (int i = Start_Basket-1; i < Start_Basket-1+Basket_Count/2; i++) {
+				//cout << " selected Basket 1 : " << Basket_list[i] << endl;
+				//cout << " selected Basket 2 : " << Basket_list[i + (Basket_Count - 1) - Count] << endl;
+				//cout << i + (Basket_Count - 1) - Count;
+				Tmp_Basket = Basket_list[i];
+				Basket_list[i] = Basket_list[i + (Basket_Count-1) - Count];
+				Basket_list[i + (Basket_Count - 1) - Count] = Tmp_Basket;
+				Count += 2;
+			}
+			/*
+			for (int i = 0; i < N; i++) {
+				cout << Basket_list[i] << " ";
+			}
+			cout << endl;
+			*/
+		}
+	}
+
+	for (int i = 0; i < N; i++) {
+		cout << Basket_list[i] << " ";
+	}
+
+	return 0;
+}

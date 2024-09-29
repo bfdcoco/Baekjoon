@@ -1,0 +1,106 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	int N, M;
+	char Board[51][51];
+	bool isBlack = 1;
+	int repeat = 2;
+
+	int Board_revise_B[51][51] = { 0,{0,} };
+	int Count[51][51] = { 0,{0,} };
+
+	int MIN;
+
+	cin >> N >> M;
+
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < M; j++) {
+			cin >> Board[i][j];
+		}
+	}
+
+	// 수정해야하는 부분들 찾아서 Board_revise_B 배열 완성
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < M; j++) {
+			//1. 홀수 행의 홀수 열 - 'B' 여야 하는데,
+			if (i % 2 == 1 && j % 2 == 1) {
+				if (Board[i][j] == 'W') { // 만약 'W' 라면
+					Board_revise_B[i][j] = 1; // 수정이 필요하다.
+				}
+			}
+			//홀수 행의 짝수 열 - 'W' 여야 하는데,
+			else if (i % 2 == 1 && j % 2 == 0) {
+				if (Board[i][j] == 'B') { // 만약 'B' 라면
+					Board_revise_B[i][j] = 1; // 수정이 필요하다.
+				}
+			}
+			//2. 짝수 행의 홀수 열 - 'W' 여야 하는데,
+			if (i % 2 == 0 && j % 2 == 1) {
+				if (Board[i][j] == 'B') { // 만약 'B' 라면
+					Board_revise_B[i][j] = 1; // 수정이 필요하다.
+				}
+			}
+			//짝수 행의 짝수 열 - 'B' 여야 하는데,
+			else if (i % 2 == 0 && j % 2 == 0) {
+				if (Board[i][j] == 'W') { // 만약 'W' 라면
+					Board_revise_B[i][j] = 1; // 수정이 필요하다.
+				}
+			}
+		}
+	}
+	// Board_revise 8*8 사이즈 탐색 및 내부 요소 합 정리
+	for (int i = 0; i < N - 7; i++) {
+		for (int j = 0; j < M - 7; j++) {
+			for (int row = i; row < i + 8; row++) {
+				for (int column = j; column < j + 8; column++) {
+					if (Board_revise_B[row][column] == 1) {
+						Count[i][j]++;
+					}
+				}
+			}
+		}
+	}
+
+
+	// 수정 부분 가시화 코드
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < M; j++) {
+			cout << Board_revise_B[i][j] << ' ';
+		}
+		cout << endl;
+	}
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < M; j++) {
+			cout << Count[i][j] << ' ';
+		}
+		cout << endl;
+	}
+
+	// 처음 시작이 W일 경우
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < M; j++) {
+			if ((64 - Count[i][j]) < Count[i][j]) {
+				Count[i][j] = (64 - Count[i][j]);
+			}
+		}
+		cout << endl;
+	}
+
+
+	MIN = Count[0][0];
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < M; j++) {
+			if ((MIN > Count[i][j]) && i < (N-7) && j < (M-7)) {
+				MIN = Count[i][j];
+			}
+		}
+		cout << endl;
+	}
+
+	cout << MIN;
+
+	return 0;
+}

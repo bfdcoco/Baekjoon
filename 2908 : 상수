@@ -1,0 +1,47 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	char num1[4], num2[4];
+	int repeat = 3;
+	int num1_point = 0, num2_point = 0;
+
+	cin >> num1 >> num2;
+
+	while (repeat) {
+		if (num1[repeat-1] > num2[repeat-1]) {
+			num1_point += repeat*repeat;
+		}
+		else if (num1[repeat - 1] < num2[repeat - 1]) {
+			num2_point += repeat*repeat;
+		}
+
+		repeat--;
+	}
+
+	if (num1_point > num2_point) {
+		repeat = 3;
+		while (repeat) {
+			cout << num1[repeat - 1];
+			repeat--;
+		}
+	}
+	else if (num1_point < num2_point) {
+		repeat = 3;
+		while (repeat) {
+			cout << num2[repeat - 1];
+			repeat--;
+		}
+	}
+	else {
+		repeat = 3;
+		while (repeat) {
+			cout << num1[repeat - 1];
+			repeat--;
+		}
+	}
+
+	return 0;
+}

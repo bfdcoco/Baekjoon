@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+
+#include<string>
+
+bool isPalindromeNum(string Num) {
+	for (int i = 0; i < Num.size()/2; i++) {
+		//cout << i << endl;
+		//cout << "Num[" << i << "]" << Num[i] << endl;
+		//cout << "Num[i + (Num.size() / 2 - i*2)]" << Num[i + (Num.size() - 1 - i*2)] << endl;
+		if (Num[i] != Num[i + (Num.size() - 1 - i * 2)]) {
+			return false;
+		}
+		// i가 왜 순환이 안될까? -> 로직 문제였네. Num.size() - 1 - i*2 여야 하는 걸, Num.size()/2 - i*2로 해두고 있었음
+	}
+	return true;
+}
+
+int main()
+{
+	string str;
+
+	while (1) {
+		cin >> str;
+		if (str == "0") break;
+
+		if (isPalindromeNum(str) == true) {
+			cout << "yes" << endl;
+		}
+		else if (isPalindromeNum(str) == false) {
+			cout << "no" << endl;
+		}
+		str.clear();
+	}
+
+	return 0;
+}

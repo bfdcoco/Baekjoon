@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+
+#include<string>
+
+bool isPalindromeWord(string Word) {
+	for (int i = 0; i < Word.size() / 2; i++) {
+		if (Word[i] != Word[i + (Word.size() - 1 - i * 2)]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+int main()
+{
+	string str;
+
+	cin >> str;
+
+	if (isPalindromeWord(str) == true) {
+		cout << "1";
+	}
+	else if (isPalindromeWord(str) == false) {
+		cout << "0";
+	}
+
+	return 0;
+}

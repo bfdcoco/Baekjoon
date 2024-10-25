@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+#include<string>
+
+int main()
+{
+	string AlphabetList;
+	int time = 0;
+
+	cin >> AlphabetList;
+
+	for (int i = 0; i < AlphabetList.length(); i++) {
+		if (AlphabetList[i] == 'A' || AlphabetList[i] == 'B'|| AlphabetList[i] == 'C') {
+			time += 3;
+		}
+		else if (AlphabetList[i] == 'D' || AlphabetList[i] == 'E' || AlphabetList[i] == 'F') {
+			time += 4;
+		}
+		else if (AlphabetList[i] == 'G' || AlphabetList[i] == 'H' || AlphabetList[i] == 'I') {
+			time += 5;
+		}
+		else if (AlphabetList[i] == 'J' || AlphabetList[i] == 'K' || AlphabetList[i] == 'L') {
+			time += 6;
+		}
+		else if (AlphabetList[i] == 'M' || AlphabetList[i] == 'N' || AlphabetList[i] == 'O') {
+			time += 7;
+		}
+		else if (AlphabetList[i] == 'P' || AlphabetList[i] == 'Q' || AlphabetList[i] == 'R' || AlphabetList[i] == 'S') {
+			time += 8;
+		}
+		else if (AlphabetList[i] == 'T' || AlphabetList[i] == 'U' || AlphabetList[i] == 'V') {
+			time += 9;
+		}
+		else if (AlphabetList[i] == 'W' || AlphabetList[i] == 'X' || AlphabetList[i] == 'Y' || AlphabetList[i] == 'Z') {
+			time += 10;
+		}
+	}
+
+	cout << time;
+
+	return 0;
+}

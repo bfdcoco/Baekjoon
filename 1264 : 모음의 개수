@@ -1,0 +1,25 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main() {
+	string str;
+	while (true) {
+		int count = 0;
+
+		getline(cin, str, '\n');
+		if (str == "#") break;
+		for (int i = 0; i < str.length(); i++) {
+			//cout << str[i] << endl;
+			if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' ||
+				str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U') {
+				count++;
+
+				//cout << count << endl;
+			}
+		}
+			cout << count;
+			cout << endl;
+		}
+	return 0;
+}

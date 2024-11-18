@@ -1,0 +1,42 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main() {
+    string str;
+    int index = 0;
+
+    cin >> str;
+
+    int count = str.length();
+
+    while (str[index] != '\0') {
+        //cout << count << endl;
+        //cout << index;
+        switch (str[index]) {
+        case 'c': if(str[index+1]=='=' || str[index+1]=='-') count -= 1; break;
+        case 'd': 
+            if(str[index+1]=='z'){
+                if(str[index+2]=='=') count -= 2; break;
+            }
+            else if(str[index+1]=='-') count -= 1; break;
+        case 'l':
+            if(str[index+1]=='j') count -= 1; break;
+        case 'n':
+            if (str[index + 1] == 'j') count -= 1; break;
+        case 's':
+            if (str[index + 1] == '=') count -= 1; break;
+        case 'z':
+            if (str[index + 1] == '=') {
+                count -= 1;
+                if(index != 0 && str[index-1] == 'd') count += 1; break;
+            }
+        }
+        
+        index++;
+    }
+
+    cout << count;
+
+    return 0;
+}

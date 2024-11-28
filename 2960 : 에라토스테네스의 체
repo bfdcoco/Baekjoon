@@ -1,0 +1,54 @@
+#include<iostream>
+
+using namespace std;
+
+int Sieve_of_Eratosthenes(int* arr, int N, int K);
+
+int main() {
+    int N, K;
+    int arr[1001];
+    int searching_num = 0;
+
+    cin >> N >> K;
+    K++;
+
+    for (int i = 0; i <= N; i++) {
+        arr[i] = i;
+    }
+
+    /*
+    for (int i = 0; i <= N; i++) {
+        cout << arr[i] << " ";
+    }
+    */
+    for (int i = 0; i <= N; i++) {
+        if (K == 0) break;
+        if (arr[i] == 0) {
+            searching_num = i;
+            K--;
+        }
+    }
+    /*
+    for (int i = 0; i <= N; i++) {
+        cout << arr[i] << " ";
+    }
+    */
+
+    cout << Sieve_of_Eratosthenes(&arr[0], N, K);
+
+    return 0;
+}
+
+int Sieve_of_Eratosthenes(int *arr, int N, int K) {
+    int count = 0;
+    for (int primeNum = 2; primeNum <= N; primeNum++) {
+        for (int i = 0; i <= N; i++) {
+            if (arr[i] != 0 && arr[i] % primeNum == 0) {
+                count++;
+                if (count == K) return arr[i];
+                //cout << arr[i] << " ";
+                arr[i] = false;
+            }
+        }
+    }
+}

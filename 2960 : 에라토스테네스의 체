@@ -7,7 +7,6 @@ int Sieve_of_Eratosthenes(int* arr, int N, int K);
 int main() {
     int N, K;
     int arr[1001];
-    int searching_num = 0;
 
     cin >> N >> K;
 

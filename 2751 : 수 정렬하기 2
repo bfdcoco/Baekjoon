@@ -1,0 +1,25 @@
+#include<iostream>
+#include<algorithm>
+#include<list>
+
+using namespace std;
+
+int main() {
+    int repeat, num;
+    list<int> lst;
+
+    cin >> repeat;
+
+    while (repeat--) {
+        cin >> num;
+        lst.push_back(num);
+    }
+
+    lst.sort();
+
+    for (auto& value : lst) {
+        printf("%d\n", value);
+    }
+
+    return 0;
+}

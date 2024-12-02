@@ -1,0 +1,25 @@
+#include<iostream>
+
+using namespace::std;
+
+int main() {
+
+	int N, K;
+	cin >> N >> K;
+	int num1 = 1, num2 = 1;
+	int K2 = K;
+	while (K2) {
+		num1 *= N;
+		N--;
+		K2--;
+	}
+	
+	while (K) {
+		num2 *= K;
+		K--;
+	}
+
+	cout << num1 / num2;
+
+	return 0;
+}

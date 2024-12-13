@@ -1,0 +1,41 @@
+#include<iostream>
+#include<list>
+using namespace std;
+
+int isPrime(int inputNum);
+
+int main()
+{
+	list<int> lst;
+
+	int sum = 0;
+	int min, max;
+	int min_prime = -1;
+
+	cin >> min >> max;
+
+	for (int i = min; i <= max; i++) {
+		if (isPrime(i) == 1) {
+			if (min_prime == -1) min_prime = i;
+			sum += i;
+		}
+	}
+	if (sum != 0) cout << sum << "\n";
+
+	cout << min_prime;
+
+	return 0;
+}
+int isPrime(int inputNum) {
+	if (inputNum == 1) {
+		return 0;
+	}
+	else if (inputNum != 1) {
+		for (int i = 2; i < inputNum; i++) {
+			if (inputNum % i == 0) {
+				return 0;
+			}
+		}
+	}
+	return 1;
+}

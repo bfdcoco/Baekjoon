@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<int> v;
+    int N, M, num;
+    cin >> N >> M;
+    int MAX_sum = 0;
+
+    for (int i = 0; i < N; i++) {
+        cin >> num;
+        v.push_back(num);
+    }
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            for (int k = 0; k < N; k++) {
+                if (i != j && i != k && j != k) {
+                    if(v[i] + v[j] + v[k] <= M) if (v[i] + v[j] + v[k] >= MAX_sum) MAX_sum = (v[i] + v[j] + v[k]);
+                }
+            }
+        }
+    }
+
+    cout << MAX_sum;
+
+    return 0;
+}
